@@ -1,13 +1,13 @@
 package com.github.isaconstance.ms.pedidos.dto;
 
-import com.github.isaconstance.ms.pedidos.entities.ItemPedido;
+import com.github.isaconstance.ms.pedidos.entities.ItemDoPedido;
 import com.github.isaconstance.ms.pedidos.entities.Pedido;
 import com.github.isaconstance.ms.pedidos.entities.Status;
-import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +35,8 @@ public class PedidoDto {
     @Enumerated(EnumType.STRING)
     private Status status;
     private BigDecimal valorTotal;
+
+    @NotEmpty(message = "Pedido deve ter pelo menos um item")
     private List<@Valid ItemDoPedidoDto> itens = new ArrayList<>();
 
     public PedidoDto(Pedido pedido) {
@@ -46,7 +48,7 @@ public class PedidoDto {
         valorTotal = pedido.getValorTotal();
 
         // para os itens do pedido
-        for (ItemPedido item : pedido.getItens()){
+        for (ItemDoPedido item : pedido.getItens()){
             ItemDoPedidoDto itemDto = new ItemDoPedidoDto(item);
             itens.add(itemDto);
         }

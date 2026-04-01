@@ -36,7 +36,7 @@ public class Pedido {
     //relacionamento
     @OneToMany(mappedBy =  "pedido",
             cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemPedido> itens = new ArrayList<>();
+    private List<ItemDoPedido> itens = new ArrayList<>();
 
     public void calcularValorTotalDoPedido(){
         this.valorTotal = this.itens.stream()

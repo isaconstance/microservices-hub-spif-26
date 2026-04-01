@@ -1,7 +1,6 @@
 package com.github.isaconstance.ms.pedidos.dto;
 
-import com.github.isaconstance.ms.pedidos.entities.ItemPedido;
-import jakarta.persistence.Column;
+import com.github.isaconstance.ms.pedidos.entities.ItemDoPedido;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -27,10 +26,10 @@ public class ItemDoPedidoDto {
     @Positive(message = "Preço unitário deve ser um valor positivo e maior que zero")
     private BigDecimal precoUnitario;
 
-    public ItemDoPedidoDto(ItemPedido itemPedido){
-        id = itemPedido.getId();
-        quantidade = itemPedido.getQuantidade();
-        descricao = itemPedido.getDescricao();
-        precoUnitario = itemPedido.getPrecoUnitario();
+    public ItemDoPedidoDto(ItemDoPedido itemDoPedido){
+        id = itemDoPedido.getId();
+        quantidade = itemDoPedido.getQuantidade();
+        descricao = itemDoPedido.getDescricao();
+        precoUnitario = itemDoPedido.getPrecoUnitario();
     }
 }

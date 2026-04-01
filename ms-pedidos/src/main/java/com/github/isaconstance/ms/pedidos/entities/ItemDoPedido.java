@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "tb_item_do_pedido")
-public class ItemPedido {
+public class ItemDoPedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
